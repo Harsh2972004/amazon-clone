@@ -6,17 +6,22 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HeaderBottom from "./HeaderBottom";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const products = useSelector((state) => state.amazonReducer.products);
   const [showAll, setShowAll] = useState(false);
 
   return (
     <div className="w-full sticky top-0 z-50">
       <div className="w-full bg-amazon_blue text-white px-4 py-3 grid grid-cols-[60%_20%_20%] mdl:flex items-center mdl:gap-4">
         {/* {=========== IMAGE START ===========} */}
-        <div className="headerHover">
-          <img className="w-[86px] lg:w-24 mt-2" src={logo} alt="logo" />
-        </div>
+        <Link to="/">
+          <div className="headerHover">
+            <img className="w-[86px] lg:w-24 mt-2" src={logo} alt="logo" />
+          </div>
+        </Link>
         {/* {=========== IMAGE END ===========} */}
         {/* {=========== DELIVERY START ===========} */}
         <div className="headerHover hidden mdl:inline-flex">
@@ -87,15 +92,17 @@ const Header = () => {
         </div>
         {/* {=========== RETURN END ===========} */}
         {/* {=========== CART START ===========} */}
-        <div className="flex items-start justify-center headerHover relative">
-          <ShoppingCartIcon />
-          <p className="text-xs font-semibold mt-3 text-whiteText">
-            Cart{" "}
-            <span className="absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex items-center justify-center">
-              0
-            </span>
-          </p>
-        </div>
+        <Link to="/cart">
+          <div className="flex items-start justify-center headerHover relative">
+            <ShoppingCartIcon />
+            <p className="text-xs font-semibold mt-3 text-whiteText">
+              Cart{" "}
+              <span className="absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex items-center justify-center">
+                {products.length > 0 ? products.length : 0}
+              </span>
+            </p>
+          </div>
+        </Link>
         {/* {=========== CART END ===========} */}
       </div>
       <HeaderBottom />

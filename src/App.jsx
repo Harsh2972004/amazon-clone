@@ -1,6 +1,7 @@
 import { productsData } from "./api/api";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/Header";
+import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import {
   createBrowserRouter,
@@ -25,6 +26,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} loader={productsData}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Route>
     )
   );
