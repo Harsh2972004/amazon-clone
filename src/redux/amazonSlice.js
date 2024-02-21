@@ -17,8 +17,34 @@ export const amazonSlice = createSlice({
         state.products.push(action.payload);
       }
     },
+    deleteItem: (state, action) => {
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+    resetCart: (state) => {
+      state.products = [];
+    },
+    incereseQuantaity: (state, action) => {
+      const item = state.products.find((item) => item.id === action.payload);
+      item.quantity++;
+    },
+    decereseQuantaity: (state, action) => {
+      const item = state.products.find((item) => item.id === action.payload);
+      if (item.quantity === 1) {
+        item.quantity = 1;
+      } else {
+        item.quantity--;
+      }
+    },
   },
 });
 
-export const { addToCart } = amazonSlice.actions;
+export const {
+  addToCart,
+  deleteItem,
+  resetCart,
+  incereseQuantaity,
+  decereseQuantaity,
+} = amazonSlice.actions;
 export default amazonSlice.reducer;

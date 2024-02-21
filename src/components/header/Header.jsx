@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const products = useSelector((state) => state.amazonReducer.products);
+  const products = useSelector((state) => state.amazon.products);
   const [showAll, setShowAll] = useState(false);
 
   return (

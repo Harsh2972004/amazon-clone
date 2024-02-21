@@ -9,12 +9,14 @@ import {
   Outlet,
   Route,
   RouterProvider,
+  ScrollRestoration,
 } from "react-router-dom";
 
 const Layout = () => {
   return (
     <div>
       <Header />
+      <ScrollRestoration />
       <Outlet />
       <Footer />
     </div>
