@@ -33,8 +33,7 @@ const FooterMiddle = () => {
           </p>
         </div>
         <div className="flex gap-1 items-center justify-center border border-gray-500 hover:border-amazon_yellow cursor-pointer duration-200 px-2 py-1">
-          <img className="w-5" src={bdFlag} alt="bdFlag" />
-          <p className="text-sm mdl:text-lg">Bangladesh</p>
+          <p className="text-sm mdl:text-lg px-1">India</p>
         </div>
       </div>
       {/* {========= Bottom End ==========} */}

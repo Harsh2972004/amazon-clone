@@ -30,10 +30,11 @@ const Cart = () => {
     <div className="w-full bg-gray-100 p-4">
       {products.length > 0 ? (
         <div className="container mx-auto h-auto grid grid-cols-5 gap-8">
-          <div className="w-full h-full bg-white px-4 col-span-4">
+          <div className="w-full h-full bg-white px-4 col-span-5 mdl:col-span-3 lgl:col-span-4">
             <div className="font-titleFont flex items-center justify-between border-b-[1px] border-b-gray-400 py-3 font-medium">
-              <h2 className="text-3xl">Shopping Cart</h2>
+              <h2 className="hidden mdl:text-3xl lgl:block">Shopping Cart</h2>
               <h4 className="text-xl">SubTotal</h4>
+              <h5 className="font-bold lgl:hidden">${totalPrice}</h5>
             </div>
             {/* Products start here */}
             <div>
@@ -43,22 +44,26 @@ const Cart = () => {
                     key={item.id}
                     className="w-full border-b-[1px] border-b-gray-300 py-4 flex items-center gap-6 justify-between"
                   >
-                    <div className="w-1/5">
+                    <div className="w-2/5 mdl:w-1/5">
                       <img
-                        className="w-full h-44 object-contain"
+                        className="w-[80%] mdl:w-full h-44 object-contain"
                         src={item.image}
                         alt={item.image}
                       />
                     </div>
                     <div className="w-3/5">
-                      <h2 className="font-semibold text-lg">{item.title}</h2>
-                      <p className="pr-10 text-sm">{item.description}</p>
-                      <p className="text-base">
+                      <h2 className="font-semibold mb-1 text-sm mdl:text-lg">
+                        {item.title}
+                      </h2>
+                      <p className="pr-10 text-sm hidden lgl:block">
+                        {item.description}
+                      </p>
+                      <p className="mdl:text-base text-xs mb-1 mdl:mb-0">
                         Unit Price:{" "}
                         <span className="font-semibold">${item.price}</span>
                       </p>
-                      <div className="bg-[#F0F2F2] flex justify-center items-center gap-1 w-24 py-1 text-center drop-shadow-lg rounded-md">
-                        <p>qty:</p>
+                      <div className="bg-[#F0F2F2] flex justify-center items-center gap-1 w-24 py-1 text-center drop-shadow-lg rounded-md mb-1">
+                        <p className="text-sm mdl:text-base">qty:</p>
                         <p
                           onClick={() => dispatch(decereseQuantaity(item.id))}
                           className="cursor-pointer bg-gray-200 px-1 rounded-md hover:bg-gray-300 duration-300"
@@ -80,7 +85,7 @@ const Cart = () => {
                         Delete Item
                       </button>
                     </div>
-                    <div>
+                    <div className="hidden lgl:block">
                       <p className="text-lg font-semibold font-titleFont">
                         ${(item.price * item.quantity).toFixed(2)}
                       </p>
@@ -99,7 +104,7 @@ const Cart = () => {
               </button>
             </div>
           </div>
-          <div className="w-full h-52 bg-white col-span-1 flex flex-col items-center justify-center p-4">
+          <div className="w-full h-52 bg-white col-span-5 mdl:col-span-2 lgl:col-span-1 flex flex-col items-center justify-center p-4">
             <div>
               <p className="flex gap-2 items-start text-sm">
                 <span>
@@ -133,16 +138,16 @@ const Cart = () => {
               alt="emptyCart"
             />
           </div>
-          <div className="w-96 p-4 bg-white flex flex-col items-center rounded-md shadow-lg">
-            <h1 className="font-titleFont text-xl font-bold">
+          <div className="w-80 mdl:w-96 p-4 bg-white flex flex-col items-center rounded-md shadow-lg">
+            <h1 className="font-titleFont mb-2 text-sm text-center mdl:text-xl font-bold">
               Your Cart Feels Lonely.
             </h1>
-            <p className="text-sm text-center">
+            <p className="text-[10xpx] text-sm text-center">
               Your Shopping Cart lives to serve. Give it purpose - fill it with
               books, electronics, videos etc. and make it happy.
             </p>
             <Link to="/">
-              <button className="mt-6 bg-yellow-400 rounded-md cursor-pointer hover:bg-yellow-500 active:bg-yellow-700 px-8 py-2 font-titleFont font-semibold text-lg">
+              <button className="mt-6 bg-yellow-400 rounded-md cursor-pointer hover:bg-yellow-500 active:bg-yellow-700 px-4 mdl:px-8 py-2 font-titleFont font-semibold text-xs mdl:text-lg">
                 Continue Shopping
               </button>
             </Link>
